@@ -23,12 +23,19 @@ Welcome, {{name}}!
 <a href="/?genre=strategy">Strategy</a>
 <a href="/?genre=exercise">Exercise</a>
 
+<br/><br/>
 
+<form action="/searchByGameStat" method="get">
+    <input type="text" placeholder="Search by GameStats" name="search"/>
+    <button type="submit">Search</button>
+</form>
+
+<br/><br/>
 
 <br/><br/>
 
 <form action="/searchByName" method="get">
-    <input type="text" placeholder="Search" name="search"/>
+    <input type="text" placeholder="Search by Name" name="search"/>
     <button type="submit">Search</button>
 </form>
 
@@ -65,7 +72,7 @@ Welcome, {{name}}!
 
 <ol>
     {{#games}}
-    <li>{{name}} {{platform}} {{releaseYear}}
+    <li>{{name}} {{platform}} {{releaseYear}} {{gameStat}} 
         <a href="/delete?gameID={{id}}">remove</a></li>
     {{/games}}
 </ol>

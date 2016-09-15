@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface GameRepository extends CrudRepository<Game, Integer> {
     List<Game> findByGenre(String genre); //name of the parameter doesn't matter the name of the method matters
-    List<Game> findByReleaseYear(int year); // spring takes the first capitilized word and passes it into the database - very important for it to map correctly
-
+    List<Game> findByReleaseYear(int year); // spring takes the first capitalized word and passes it into the database - very important for it to map correctly
+    List<Game> findByGameStat(String gameStat);
 
     List<Game> findByUser(User user);
 

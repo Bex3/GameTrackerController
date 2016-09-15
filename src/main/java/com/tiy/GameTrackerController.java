@@ -51,6 +51,15 @@ public class GameTrackerController {
         return "home";
     }
 
+
+    @RequestMapping(path = "/searchGameStat", method = RequestMethod.GET) //adding this
+    public String queryGamesByGameStat(Model model, String search) {
+        System.out.println("Searching by ..." + search);
+        List<Game> gameList = games.findByGameStat(search);
+        model.addAttribute("games", gameList);
+        return "home";
+    }
+
     @RequestMapping(path = "/delete", method = RequestMethod.GET)
     public String removeGame(Model model, Integer gameID) {
         if (gameID != null) {
@@ -61,7 +70,7 @@ public class GameTrackerController {
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(Model model, HttpSession session, String genre, Integer releaseYear) { // not making the Integer an int since int/primitaive types initialized by default - so it doesn't work for !null here
+    public String home(Model model, HttpSession session, String genre, Integer releaseYear, String gameStat) { // not making the Integer an int since int/primitaive types initialized by default - so it doesn't work for !null here
 
         if (session.getAttribute("user") != null) {
             model.addAttribute("user", session.getAttribute("user"));
@@ -72,6 +81,8 @@ public class GameTrackerController {
             gameList = games.findByGenre(genre);
         } else if (releaseYear != null) {
             gameList = games.findByReleaseYear(releaseYear);
+        } else if (gameStat != null){
+            gameList = games.findByGameStat(gameStat);
         } else {
             User savedUser = (User)session.getAttribute("user");
             if (savedUser != null) {

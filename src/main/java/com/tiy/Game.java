@@ -30,14 +30,18 @@ public class Game {
     @Column(nullable = false)
     int releaseYear;
 
+    @Column
+    String gameStat;
+
     public Game() {
     }
 
-    public Game(String name, String platform, String genre, int releaseYear, User user) {
+    public Game(String name, String platform, String genre, int releaseYear, User user, String gameStat) {
         this.name = name;
         this.platform = platform;
         this.genre = genre;
         this.releaseYear = releaseYear;
         this.user = user;
+        this.gameStat = gameStat;
     }
 }

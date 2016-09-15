@@ -21,7 +21,9 @@ Welcome, {{name}}!
 <a href="/?genre=adventure">Adventure</a>
 <a href="/?genre=rpg">RPG</a>
 <a href="/?genre=strategy">Strategy</a>
-<a href="/?genre=shooter">Shooter</a>
+<a href="/?genre=exercise">Exercise</a>
+
+
 
 <br/><br/>
 
@@ -39,13 +41,13 @@ Welcome, {{name}}!
         <option value="adventure">Adventure</option>
         <option value="rpg">RPG</option>
         <option value="strategy">Strategy</option>
-        <option value="shooter">Shooter</option>
+        <option value="exercise">Exercise</option>
     </select>
     <select name="gamePlatform">
         <option selected disabled>Platform</option>
         <option value="pc">PC</option>
         <option value="ps4">PS4</option>
-        <option value="xbone">XBox One</option>
+        <option value="xboxone">XBox One</option>
         <option value="wiiu">Wii U</option>
     </select>
     <input type="number" placeholder="Release Year" name="gameYear"/>
@@ -55,7 +57,7 @@ Welcome, {{name}}!
 <ol>
     {{#games}}
     <li>{{name}} {{platform}} {{releaseYear}}
-        <a href="/delete?gameID={{id}}">delete</a></li>
+        <a href="/delete?gameID={{id}}">remove</a></li>
     {{/games}}
 </ol>
 {{/user}}

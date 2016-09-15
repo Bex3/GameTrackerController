@@ -52,7 +52,7 @@ public class GameTrackerController {
     }
 
     @RequestMapping(path = "/delete", method = RequestMethod.GET)
-    public String deleteGame(Model model, Integer gameID) {
+    public String removeGame(Model model, Integer gameID) {
         if (gameID != null) {
             games.delete(gameID);
         }
@@ -108,4 +108,4 @@ public class GameTrackerController {
     }
 
 
-    }
+}

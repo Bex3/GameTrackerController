@@ -39,6 +39,42 @@
         </li>
     </ul>
 </div>
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+    <h1>Enter new game information</h1>
+    <span>Game name: <input type="text" ng-model="newGame.name"/></span>
+    <span>
+        <select name="gameGenre" ng-model="newGame.genre">
+            <option selected disabled>Genre</option>
+            <option value="adventure">Adventure</option>
+            <option value="rpg">RPG</option>
+            <option value="strategy">Strategy</option>
+            <option value="shooter">Shooter</option>
+        </select>
+    </span>
+    <span>
+        <select name="gamePlatform" ng-model="newGame.platform">
+            <option selected disabled>Platform</option>
+            <option value="pc">PC</option>
+            <option value="ps4">PS4</option>
+            <option value="xboxone">XBox One</option>
+            <option value="wiiu">Wii U</option>
+        </select>
+    </span>
+    <span><input type="number" placeholder="Release Year" name="gameYear" ng-model="newGame.releaseYear"/></span>
+
+    <span>
+        <select name="gameStat" ng-model="newGame.platform">
+             <option selected disabled>Game Stat</option>
+            <option value="boss">Boss</option>
+            <option value="decent">Decent</option>
+            <option value="eh">Eh</option>
+            <option value="newb">Newb</option>
+        </select>
+    </span>
+
+    <span>  <input type="button" ng-click="addGame()" value="Create new game"/></span>
+
+</div>
 
 
 

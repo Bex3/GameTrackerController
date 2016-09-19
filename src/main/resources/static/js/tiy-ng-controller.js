@@ -43,5 +43,20 @@ angular.module('TIYAngularApp', [])
                     });
         };
 
+        $scope.addGame = function() {
+            console.log("About to add the following game " + JSON.stringify($scope.newGame));
+
+            $http.post("/addGame.json", $scope.newGame)
+                .then(
+                    function successCallback(response) {
+                        console.log(response.data);
+                        console.log("Adding data to scope");
+                        $scope.games = response.data;
+                    },
+                    function errorCallback(response) {
+                        console.log("Unable to get data");
+                    });
+        };
+
         $scope.newGame = {}; //if we want to use use scope on the new game in the view we must make it exist first
     });

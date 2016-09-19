@@ -11,21 +11,21 @@ import java.util.ArrayList;
  * Created by bearden-tellez on 9/19/16.
  */
 
-@RestController //rest - json api over http
+@RestController //rest - json api over http automatically converts the code
 public class GameTrackerJsonController {
 
     @Autowired
-    GameRepository games;
+    GameRepository games; //must bring in the repo here in order to cycle through the repo
 
 
     @RequestMapping(path = "/games.json", method = RequestMethod.GET)
     public ArrayList<Game> jsonHome(User user, String name, String platform, String genre, Integer releaseYear, String gameStat) {
         ArrayList<Game> gameList = new ArrayList<Game>();
-        Iterable<Game> allGames = games.findAll();
+        Iterable<Game> allGames = games.findAll(); // hibernate (object relational mapping) uses the repo
         for (Game game : allGames) {
             gameList.add(game);
         }
-        return gameList;
+        return gameList; // returns an object instead of a view b/c this is a restful webservice - only gives data
 
     }
 }

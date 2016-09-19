@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en-US" ng-app>
+<html lang="en-US" ng-app="TIYAngularApp">
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body>
+<script src="js/tiy-ng-controller.js"></script> <!--relative path based on where you currently are different for webserver & local-->
+<script src=".../static "> </script>
+<body ng-controller="SampleController">
 
+<!--
 {{! changing the mustache delimiter so it doesn't conflict with  }}
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
-
+-->
+<!-- angular never sees the info above since mustache pre-process the html, mustache still sees this since it doesn't care about html or the comments-->
 
 <div style="position: relative; float: left; width: 100%; padding: 20px;">
     <h1>{{greeting}} <span ng-bind="name"></span></h1> <!--bind is an element in angular -->
@@ -15,6 +19,10 @@
     <p>Name : <input type="text" ng-model="name"></p> <!--binds the text, ng keywords are add'l keywords that angular allows us to use-->
 
     {{name}} is trying to figure things out ... <br/><br/>
+
+    {{whateverIWantToComeUpWith}} <br/><br/>
+
+    <span> {{testVar.sampleContainerVar}}</span> <br/><br/>
 
     <input type="button" ng-click="getGames()" value="Refresh Game Data"/>
 

@@ -1,11 +1,13 @@
 package com.tiy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import sun.reflect.annotation.ExceptionProxy;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -36,6 +38,40 @@ public class GameTrackerJsonController {
         }
 
         return gameList; // returns an object instead of a view b/c this is a restful webservice - only gives data
-
     }
+
+    ArrayList<Game> getAllGames() {
+        ArrayList<Game> gameList = new ArrayList<Game>();
+        Iterable<Game> allGames = games.findAll();
+        for (Game game : allGames) {
+            gameList.add(game);
+        }
+
+        return gameList;
+    }
+
+    @RequestMapping(path = "/toggleGame.json", method = RequestMethod.GET)
+    public ArrayList<Game> toggleGame(int gameID) {
+        System.out.println("toggling game with ID " + gameID);
+        Game game = games.findOne(gameID);
+        game.name = "**" + game.name;
+        games.save(game);
+
+        return getAllGames();
+    }
+
+    @RequestMapping(path = "/addGame.json", method = RequestMethod.POST) //post & rest combined means that we take the game signaled at the rest controller and turn it into a java object
+    public ArrayList<Game> addGame(HttpSession session, @RequestBody Game game) throws Exception {
+        User user = (User)session.getAttribute("user");
+
+        if (user == null) {
+            throw new Exception("Unable to add game without an active user in the session");
+        }
+        game.user = user;
+
+        games.save(game);
+
+        return getAllGames();
+    }
+
 }

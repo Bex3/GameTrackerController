@@ -24,5 +24,24 @@ angular.module('TIYAngularApp', [])
                     console.log("Done with the promise - waiting for the callback");
         };
 
-        $scope.newGame = {};
+        $scope.toggleGame = function(gameID) {
+            console.log("About to toggle game with ID " + gameID);
+
+            $http.get("/toggleGame.json?gameID=" + gameID)
+                .then(
+                    function success(response) {
+                        console.log(response.data);
+                        console.log("Game toggled");
+
+                        $scope.games = {};
+                        alert("About to refresh the games on the scope"); //pauses the execution of the js code
+
+                        $scope.games = response.data;
+                    },
+                    function error(response) {
+                        console.log("Unable to toggle game");
+                    });
+        };
+
+        $scope.newGame = {}; //if we want to use use scope on the new game in the view we must make it exist first
     });

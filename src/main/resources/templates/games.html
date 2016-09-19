@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+    <h1>Hello <span ng-bind="name"></span></h1>
+
+    <p>Name : <input type="text" ng-model="name"></p> <!--binds the text, ng keywords are add'l keywords that angular allows us to use-->
+
+    {{name}} is trying to figure things out ... <br/><br/>
+
+    <input type="button" ng-click="getGames()" value="Refresh Game Data"/>
+
+</div>
+
+</body>
+</html>

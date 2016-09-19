@@ -72,7 +72,10 @@ Welcome, {{name}}!
 
 <ol>
     {{#games}}
-    <li>{{name}} {{platform}} {{releaseYear}} {{gameStat}} 
+    <li>{{name}} {{platform}} {{releaseYear}}
+        {{#gameStat}}
+            {{.}}
+        {{/gameStat}}
         <a href="/delete?gameID={{id}}">remove</a></li>
     {{/games}}
 </ol>

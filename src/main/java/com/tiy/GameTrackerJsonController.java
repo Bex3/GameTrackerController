@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import sun.reflect.annotation.ExceptionProxy;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,15 @@ public class GameTrackerJsonController {
         for (Game game : allGames) {
             gameList.add(game);
         }
+
+        try {
+            System.out.println("Catching a nap");
+            Thread.sleep(3000);
+            System.out.println("Power naps are the best");
+        } catch (Exception ex){
+            System.out.println("Exception");
+        }
+
         return gameList; // returns an object instead of a view b/c this is a restful webservice - only gives data
 
     }

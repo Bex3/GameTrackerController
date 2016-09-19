@@ -99,13 +99,13 @@ public class GameTrackerController {
     }
 
 
-        @RequestMapping(path = "/add-game", method = RequestMethod.POST)
-        public String addGame(HttpSession session, String gameName, String gamePlatform, String gameGenre, int gameYear, String gameStat) {
-            User user = (User) session.getAttribute("user");
-            Game game = new Game(gameName, gamePlatform, gameGenre, gameYear, user, gameStat); //maps to a row in our table
-            System.out.println("My runtime repo: " + games.toString());
-            games.save(game); //uses the repo to save it
-            return "redirect:/";
+    @RequestMapping(path = "/add-game", method = RequestMethod.POST)
+    public String addGame(HttpSession session, String gameName, String gamePlatform, String gameGenre, int gameYear, String gameStat) {
+        User user = (User) session.getAttribute("user");
+        Game game = new Game(gameName, gamePlatform, gameGenre, gameYear, user, gameStat); //maps to a row in our table
+        System.out.println("My runtime repo: " + games.toString());
+        games.save(game); //uses the repo to save it
+        return "redirect:/";
         }
 
     @PostConstruct
@@ -118,5 +118,9 @@ public class GameTrackerController {
         }
     }
 
+    @RequestMapping(path = "/games", method = RequestMethod.GET)
+    public String games(Model model, HttpSession session) {
+        return "games";
+    }
 
 }

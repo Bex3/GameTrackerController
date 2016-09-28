@@ -11,7 +11,7 @@ angular.module('TIYAngularApp', [])
             console.log("About to go get me some data!");
             $scope.name = "JavaScript Master Guru";
 
-            $http.get("//localhost:8080/games.json") //asynch call
+            $http.get("/games.json") //asynch call
                 .then( //provides the callback
                     function successCallback(response) { //inside of the promise object then holds the 2 functions
                         console.log(response.data); //data is the json object as a javascript object

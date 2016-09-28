@@ -62,6 +62,8 @@ public class GameTrackerJsonController {
 
     @RequestMapping(path = "/addGame.json", method = RequestMethod.POST) //post & rest combined means that we take the game signaled at the rest controller and turn it into a java object
     public ArrayList<Game> addGame(HttpSession session, @RequestBody Game game) throws Exception {
+        System.out.println(game);
+
         User user = (User)session.getAttribute("user");
 
         if (user == null) {
